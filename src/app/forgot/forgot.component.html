@@ -1,0 +1,59 @@
+<div class="container login">
+    <p-growl [value]="msgs" sticky="sticky"></p-growl>
+    <div [ngBusy]="busy"></div>
+    <div class="container">
+        <div class="container text-center">
+            <div id="polina" class="container">
+                <form class="form-horizontal animated bounceInDown">
+                    <div *ngIf="!onForgot" class="try animated shake">
+                        No account with that email address exists or invalid answer
+                    </div>
+                    <div *ngIf="onCheck" class="check">
+                        Email has sent to your address. Please checkout your mailbox.
+                    </div>
+
+                    <!--email-->
+                    <div class="form-group has-success has-feedback">
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" placeholder="Email Address" [(ngModel)]="user.username" name="username" #username="ngModel" [ngClass]="{ 'error-form-control': !onEmail }" required/>
+                            <span class="glyphicon glyphicon-envelope form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onEmail }"></span>
+                        </div>
+                    </div>
+                    <div *ngIf="!onEmail" class="animated fadeInRight"><label class="error">Please enter a valid email address.</label></div>
+
+                    <!--question-->
+                    <div class="form-group has-success has-feedback">
+                        <div class="col-sm-12">
+                            <select class="form-control" #question="ngModel" name="question" [(ngModel)]="user.sec_question" [ngClass]="{ 'error-form-control': !onRegister&&!question.valid }" required>
+                                    <option disabled selected hidden value="" style="color: #000">Select question</option>
+                                    <option>What's your first name?</option>
+                                    <option>What's your last name?</option>
+                            </select>
+                            <span class="glyphicon glyphicon glyphicon-comment form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onRegister&&!question.valid }"></span>
+                        </div>
+                    </div>
+                    <div *ngIf="!question.valid&&!onRegister" class="animated fadeInRight"><label class="error">Please enter a question.</label></div>
+
+
+                    <!--answer-->
+                    <div class="form-group has-success has-feedback">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" [(ngModel)]="user.sec_answer" name="answer" #answer="ngModel" placeholder="Answer" [ngClass]="{ 'error-form-control': !onRegister&&!answer.valid }" required>
+                            <span class="glyphicon glyphicon-ok-sign form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onRegister&&!answer.valid }"></span>
+                        </div>
+                    </div>
+                    <div *ngIf="!answer.valid&&!onRegister" class="animated fadeInRight"><label class="error">Please enter a answer.</label></div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn create btn-success" (click)="Forgot()">Send</button>
+                    </div>
+                    <br>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

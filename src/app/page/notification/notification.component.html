@@ -1,0 +1,9 @@
+<div *ngFor="let notification of notifications" class="container notification">
+    <div class="col-md-1 col-sm-2">
+        <img [src]="notification.sender_photo" class="img-circle">
+    </div>
+    <div class="col-md-11 col-sm-10">
+        <div class="name">{{notification.sender_firstname}}.{{notification.sender_lastname}} </div>
+        <div>{{notification.message}}</div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<p-dropdown [options]="selectPatientList" [style]="{'width':'100%'}" (onChange)="selectPatient($event)">
+    <template let-patientName>
+        <div class="ui-helper-clearfix" style="position: relative;height: 25px;">
+            <img *ngIf="patientName.label == 'All'"  src="img/all-patient.png" class="image"/>
+            <img *ngIf="patientName.label != 'All' && patientName.label != 'Select Patient'"  [src]="patientName.value.photo" class="image"/>
+            <div style="font-size:14px;float:right;margin-top:4px">{{patientName.label}}</div>
+        </div>
+    </template>
+</p-dropdown>

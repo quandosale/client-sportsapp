@@ -1,0 +1,49 @@
+<div class="session">
+    <div class="container-fluid">
+        <div class="col-xs-11" style="font-size: 18px">
+            Session View - Activity Data from
+            <span class="text-nowrap">
+                <!--Februray 29, 2008-->
+                {{datetime}}
+            </span>
+        </div>
+
+        <div class="col-xs-1 pull-right">
+            <div class="closebtn" (click)="backClicked()">
+                &times;
+            </div>
+        </div>
+    </div>
+    <!--<div class="row" style="padding: 0px 20px;">
+        <div style="height: 3em;float:left;margin-right: 30px;">
+            <div style="font-size: 3em;float:left">
+                <i class="pull-left icon fa fa-user-circle-o"></i>
+            </div>
+            <div style="font-size: 1em;line-height: 3em;float:left">{{PatientName}}Samatha</div>
+        </div>
+
+        <span class="text-nowrap hidden">
+        <span class="value" style="font-size:2em;">64</span>
+        <span class="comment text-nowrap" style="margin-right: 30px">resting heartrate</span>
+        </span>
+        <span class="text-nowrap hidden">
+        <span class="value" style="font-size:2em;">154</span>
+        <span class="comment text-nowrap">Maximum heartrate</span>
+        </span>
+    </div>-->
+
+    <div class="row">
+        <div class="col-md-6 ">
+            <chart class="chart" [options]="timeOption"></chart>
+        </div>
+        <div class="col-md-6 ">
+            <chart class="chart" [options]="pointOption"></chart>
+        </div>
+        <div class="col-md-6 ">
+            <chart class="chart" [options]="caloriesOption"></chart>
+        </div>
+        <div class="col-sm-6 ">
+            <chart class="chart" [options]="distanceOption"></chart>
+        </div>
+    </div>
+</div>

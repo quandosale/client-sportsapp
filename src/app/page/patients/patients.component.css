@@ -1,0 +1,226 @@
+.patient {
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #1f2836;
+}
+
+.mypatients {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.line {
+    height: 3px;
+    background-color: white;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.box {
+    font-family: tahoma;
+    box-sizing: border-box;
+    border-radius: 3px;
+    text-align: center;
+    padding: 22px;
+    padding-top: 0;
+}
+
+.button {
+    width: 120px;
+    margin: 10px;
+}
+
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+    background-color: #3f51b5 !important;
+    border-color: #3f51b5 !important;
+}
+
+.img-thumbnail {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.img-circle {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.listText {
+    text-align: center;
+    padding: 12px;
+}
+
+.patientsName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+    text-align: center;
+}
+
+.listMyPatient {
+    background: white;
+    font-size: 14px;
+    padding: 10px;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #099DED;
+    -moz-box-shadow: inset 0px 1px 0px 0px #099DED;
+    box-shadow: inset 0px 1px 0px 0px #099DED;
+}
+
+.listMyPatient:hover {
+    background: #F3FFDA;
+}
+
+.selected {
+    background: #B8E5FB !important;
+}
+
+.listMyPatient-background {
+    background: #d9edf7;
+}
+
+.disable-btn {
+    display: none;
+}
+
+.btn-circle {
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 13px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+
+/*nav bar*/
+
+.sidenav {
+    float: right;
+    width: 0;
+    margin-top: 35px;
+    margin-right: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover,
+.offcanvas a:focus {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.sidenav .closebtn:hover {
+    color: #1f2836;
+}
+
+#main {
+    -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.cropperImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 65px;
+}
+
+.cropperBtn {
+    width: 100px;
+    margin: 0px;
+}
+
+.title {
+    font-size: 18px;
+    color: #fff;
+    /*font-family: coolvetica;*/
+}
+
+.required {
+    color: #EB3730;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.fa-cog {
+    color: #099DED;
+}
+
+.has-error {
+    color: #EB3730 !important;
+}

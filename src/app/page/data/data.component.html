@@ -1,0 +1,136 @@
+<div [ngBusy]="busy"></div>
+
+<div class="data-page clearfix">
+    <div class="filter-sidebar">
+        <h2 class="title">History</h2>
+        <div class="filter-div">
+            <div class="filter-by">Filter by</div>
+            <select-calendar-type (calendartypeselected)="onCalendarTypeSelected($event)" [selectedCalendarType]="selectedCalendarType"></select-calendar-type>
+            <div class="calendar">
+                <my-calendar (dayClickedEvent)="dayClicked($event)"></my-calendar>
+            </div>
+
+            <div class="select">
+                <div class="text-datatype">Data Type</div>
+                <select-data-type (datatypeselected)="onDataTypeSelected($event)" [selectedDataType]="selectedDataType"></select-data-type>
+            </div>
+            <div class="select">
+                <div class="text-patient">Data Owner</div>
+                <select-patient-name [needAll]="true" (patientselectedID)="onPatientSelected($event)"></select-patient-name>
+            </div>
+        </div>
+    </div>
+    <div class="graph">
+        <!--<p-dataTable #datatable #dt sortMode="multiple" [value]="patientData" [rows]="15" [paginator]="true" [pageLinks]="5" [stacked]="stacked" [responsive]="true" selectionMode="single" [(selection)]="selectedPatientData" (click)="showDetail()">
+            <p-column field="datetime" header="DateTime" [sortable]="true" [filter]="false"></p-column>
+            <p-column field="patientName" header="Name" [sortable]="true"></p-column>
+            <p-column field="type" header="Data Type" [sortable]="true"></p-column>
+            <p-column field="value" header="Preview" [sortable]="true"></p-column>
+        </p-dataTable>
+        -->
+        <div class="header">
+            <div class="type">Type</div>
+            <div class="description">Description</div>
+            <div class="date text-center">Date</div>
+            <div class="owner">Owner</div>
+        </div>
+        <div class="content">
+            <div class="c-row" *ngFor="let item of patientData" (click)="showDetail(item)">
+                <div class="type text-center">
+                    <img src="/img/type-activity.png" *ngIf="item.type=='ECG'" style="margin-top:-16px;">
+                    <img src="/img/type-sleep.png" *ngIf="item.type != 'ECG'" style="margin-top:-16px;">
+
+                </div>
+                <div class="description ">
+                    <div>Exercise session at {{item.time}}</div>
+                    <div class="text-muted">Duration 0:32:00 | Max HR 154</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">{{item.datetime}}</span></div>
+                <div class="owner">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <!--<div class="c-row  day-start">
+                <div class="type text-center">
+                    <img src="/img/type-sleep.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Sleep Data from 11:00 PM</div>
+                    <div class="text-muted">Duration 0:32:00 | Resting HR 64</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <div class="c-row day-start">
+                <div class="type text-center">
+                    <img src="/img/type-sleep.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Sleep Data from 11:00 PM</div>
+                    <div class="text-muted">Duration 0:32:00 | Resting HR 64</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <div class="c-row">
+                <div class="type text-center">
+                    <img src="/img/type-activity.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Exercise session at 10:00 AM</div>
+                    <div class="text-muted">Duration 0:32:00 | Max HR 154</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <div class="c-row day-start">
+                <div class="type text-center">
+                    <img src="/img/type-sleep.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Sleep Data from 11:00 PM</div>
+                    <div class="text-muted">Duration 0:32:00 | Resting HR 64</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <div class="c-row">
+                <div class="type text-center">
+                    <img src="/img/type-activity.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Exercise session at 10:00 AM</div>
+                    <div class="text-muted">Duration 0:32:00 | Max HR 154</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>
+            <div class="c-row">
+                <div class="type text-center">
+                    <img src="/img/type-activity.png" style="margin-top:-16px;">
+                </div>
+                <div class="description ">
+                    <div>Exercise session at 10:00 AM</div>
+                    <div class="text-muted">Duration 0:32:00 | Max HR 154</div>
+                </div>
+                <div class="date"><span class="pull-left" style="margin-top:-30px">MON Feb 28, 2015</span></div>
+                <div class="owner ">
+                    <span class="pull-left text-center" style="margin-top: -30px">Me</span>
+                </div>
+            </div>-->
+            <div class="c-row day-start">
+                <div class="col-xs-12 text-right"><button class="col-xs-12 btn more-btn">More</button></div>
+            </div>
+        </div>
+    </div>
+</div>

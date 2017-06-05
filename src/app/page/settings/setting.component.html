@@ -1,0 +1,54 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<p-confirmDialog width="425"></p-confirmDialog>
+<div class="setPage">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center tab-hidden">
+        <div class="bhoechie-tab-menu">
+            <div class="list-group">
+                <a class="list-group-item active text-center tab-title">
+                    <h3 class="glyphicon glyphicon-user"></h3><br/>Account Information
+                </a>
+                <a class="list-group-item text-center tab-title">
+                    <h3 class="glyphicon glyphicon-lock"></h3><br/>Security & Privacy
+                </a>
+                <a class="list-group-item text-center tab-title">
+                    <h3 class="glyphicon glyphicon-globe"></h3><br/>Subscription
+                </a>
+                <a class="list-group-item text-center tab-title">
+                    <h3 class="glyphicon glyphicon-cloud"></h3><br/>Gateways
+                </a>
+                <a class="list-group-item text-center tab-title">
+                    <h3 class="glyphicon glyphicon-bell"></h3><br/>Alerts and Notification
+                </a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-danger closeBtn" (click)="confirm()">Close Account</button>
+    </div>
+
+    <!--Tab-->
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 bhoechie-tab">
+        <!--Basic Information tab-->
+        <div class="bhoechie-tab-content active">
+            <userInfomation></userInfomation>
+        </div>
+
+        <!--Security & Privacy tab-->
+        <div class="bhoechie-tab-content">
+            Security & Privacy
+        </div>
+
+        <!--Subscription tab-->
+        <div class="bhoechie-tab-content">
+            Subscription
+        </div>
+
+        <!--Gateways tab-->
+        <div class="bhoechie-tab-content gateway-tab">
+            <gateways></gateways>
+        </div>
+
+        <!--Alerts and Notification tab-->
+        <div class="bhoechie-tab-content">
+            Alerts and Notification
+        </div>
+    </div>
+</div>

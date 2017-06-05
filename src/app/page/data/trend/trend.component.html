@@ -1,0 +1,37 @@
+<div class="filter-sidebar col-sm-4">
+    <select-calendar-type (calendartypeselected)="onCalendarTypeSelected($event)"></select-calendar-type>
+    <div class="calendar">
+        <my-calendar (dayClickedEvent)="dayClicked($event)"></my-calendar>
+    </div>
+    <div class="select">
+        <div class="text-patient">Patient</div>
+        <select-patient-name (patientselected)="onPatientSelected($event)" [noPatient]="true"></select-patient-name>
+        <!--(firstPatient)="onPatientSelected($event)"-->
+    </div>
+    <div class="select">
+        <div class="text-datatype">Data Type - Main plot</div>
+        <select-trend-type (trendTypesSelected)="onMainPlot($event)"></select-trend-type>
+    </div>
+    <div class="select">
+        <div class="text-datatype">Data Type -Sub plot</div>
+        <select-trend-type (trendTypesSelected)="onSubPlot($event)"></select-trend-type>
+    </div>
+    <!--<button type="button" class="btn btn-success" (click)="upload()"></button>-->
+</div>
+
+<div class="graph">
+    <div class="row">
+        <div class="col-sm-4 text-center"></div>
+        <div class="col-sm-5 text-center">
+            <img [src]="src" class="img-thumbnail col-sm-8" *ngIf="this.selectedPatient.lastname!=null" onerror="this.src='img/default-error.jpg';">
+            <div class="col-sm-4 text-center patientName">{{this.selectedPatient.lastname}}</div>
+        </div>
+        <div class="col-sm-3 title ">{{this.mainPlot}} vs {{this.subPlot}} </div>
+    </div>
+    <div class="col-sm-12 text-center" id="trendp">
+        <div id="trend" class="placeholder text-center" (window:resize)="onPlotResize($event)"></div>
+        <div *ngIf="onNoData" class="noData animated shake">
+            <div>No Data</div>
+        </div>
+    </div>
+</div>

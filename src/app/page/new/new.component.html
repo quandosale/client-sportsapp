@@ -1,0 +1,189 @@
+<div class="main container">
+
+    <div [ngBusy]="mBusy"></div>
+
+    <section class="data-dashboard">
+        <h3 class="panel-title">My Highlight</h3>
+        <div class="highlight-bg clearfix">
+            <div class="col-md-3 ">
+                <div class="row">
+                    <!--<div class="list-group patient-list">
+                <a class="list-group-item" *ngFor="let patient of mPatients; let i=index" (click)="showPatientData(patient, i)" [class.active]="mActiveState[i]">
+                    <img [src]="patient.photo" class="patient-gravatar" onerror="this.src='img/default-error.jpg';"> {{patient.firstname}} {{patient.lastname}}
+                </a>
+            </div>-->
+                    <div class="patient-list">
+                        <a class="list-group-item">
+                    Resting HR </a>
+                        <a class="list-group-item">
+                    Maximum HR</a>
+                        <a class="list-group-item active">
+                    Morning HRV</a>
+                        <a class="list-group-item">
+                    Sleep Quality   </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="ecg-thumbnail" (click)="navToDetails('ecg')">
+                                <!--<h3>ECG Data</h3>-->
+                                <ecg-thumbnail *ngIf="mECG" [ecg]="mECG"></ecg-thumbnail>
+                                <h4 *ngIf="!mECG">No Data</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row">
+                        <div class="col-md-4">
+                            <div class="well weight-thumbnail thumbnail" (click)="navToDetails('weight')">
+                                <div class="pull-left">
+                                    <h2 *ngIf="!mWeight" class="thumbnail-value">No Data</h2>
+                                    <h2 *ngIf="mWeight" class="thumbnail-value">
+                                        {{mWeight}}Kg
+                                    </h2>
+                                    <h5 class="thumbnail-type">Weight</h5>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="fa fa-line-chart thumbnail-icon"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="more-info text-center">
+                                    <a routerLink="/data">
+                                        More info <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well bp-thumbnail thumbnail" (click)="navToDetails('bp')">
+                                <div class="pull-left">
+                                    <h2 *ngIf="!mBP" class="thumbnail-value">No Data</h2>
+                                    <h2 *ngIf="mBP" class="thumbnail-value">
+                                        {{mBP.SYS}}/{{mBP.DIA}}
+                                    </h2>
+                                    <h5 class="thumbnail-type">Blood Pressure</h5>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="fa fa-heart thumbnail-icon"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="more-info text-center">
+                                    <a routerLink="/data">
+                                        More info <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well activity-thumbnail thumbnail" (click)="navToDetails('activity')">
+                                <div class="pull-left">
+                                    <h2 *ngIf="!mActivity" class="thumbnail-value">No Data</h2>
+                                    <h2 *ngIf="mActivity" class="thumbnail-value">
+                                        {{mActivity.CALORY}} kcal
+                                    </h2>
+                                    <h5 class="thumbnail-type">Activity</h5>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="fa fa-pie-chart thumbnail-icon"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="more-info text-center">
+                                    <a routerLink="/data">
+                                        More info <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+    <section class="notification">
+        <h3 class="panel-title">Friends Highlight</h3>
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="active-list">
+                    <h5 class="active-title">Recently Active</h5>
+                    <ul class="list-unstyled">
+                        <li class="item">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Jonathan</span>
+                            <span class="pull-right">2/20</span>
+                        </li>
+                        <li class="item">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Bob</span>
+                            <span class="pull-right">2/20</span>
+                        </li>
+                        <li class="item">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Samantha</span>
+                            <span class="pull-right">2/20</span>
+                        </li>
+
+
+                    </ul>
+                    <hr>
+                    <div class="more text-center">View More</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="row-custom">
+                <div class="feed-list">
+                    <h5 class="feed-title">Feed</h5>
+                    <ul class="list-unstyled">
+                        <li class="feed-item clearfix">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Samantha shared an exercise session</span>
+
+                            <div class="col-xs-12">
+                                <div class="row name-row">
+                                    <span class="name">Samantha</span>
+                                    <span class="pull-right">
+                                        <i class="fa fa-heart" style="margin-right: 10px;"></i><i class="fa fa-comment"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="feed-item clearfix">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Samantha shared an exercise session</span>
+
+                            <div class="col-xs-12">
+                                <div class="row name-row">
+                                    <span class="name">Samantha</span>
+                                    <span class="pull-right">
+                                        <i class="fa fa-heart" style="margin-right: 10px;"></i><i class="fa fa-comment"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="feed-item clearfix">
+                            <img src="http://52.33.117.221/assets/gravatar/default.jpg" class="img-circle photo">
+                            <span>Samantha shared an exercise session</span>
+
+                            <div class="col-xs-12">
+                                <div class="row name-row">
+                                    <span class="name">Samantha</span>
+                                    <span class="pull-right">
+                                        <i class="fa fa-heart" style="margin-right: 10px;"></i><i class="fa fa-comment"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

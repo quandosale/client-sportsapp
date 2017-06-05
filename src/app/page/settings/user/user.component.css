@@ -1,0 +1,378 @@
+.user {
+  margin: 6px 60px;
+  max-width: 800px;
+}
+
+.title {
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.closeBtn {
+  width: 80px;
+  
+}
+
+.well {
+  background: #FFF;
+}
+
+.item {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  padding-bottom: 5px;
+  /*border-bottom: 3px solid #00b3ee;*/
+  margin-bottom: 50px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.setting {
+  font-size: 20px;
+  text-align: left;
+  width: 100%;
+  padding-bottom: 5px;
+  /*border-bottom: 3px solid #00b3ee;*/
+  margin-bottom: 20px;
+}
+
+.img-thumbnail {
+  width: 120px !important;
+  height: 120px !important;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+@media(max-width:1250px) {
+  .img-thumbnail {
+    width: 130px !important;
+    height: 130px !important;
+    border-radius: 50%;
+    margin-bottom: 50px;
+  }
+}
+
+.cropperImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 65px;
+}
+
+.form-group {
+  margin-bottom: 6px;
+  
+}
+.input-group{
+  display:block;
+  
+}
+.control-label {
+  font-weight: normal;
+}
+
+.custom-input {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: none;
+  border-bottom: 1px #D3D3D3 solid;
+  color: #D3D3D3;
+  padding-left: 5px;
+  padding-right:5px;
+}
+.h-ft{
+  width:50px;
+  margin-right:5px;
+}
+.h-in{
+  width:50px;
+  margin-right:5px;
+}
+.h-type{
+  width:80px;
+  float:right;
+}
+.w-type{
+  width:60px;
+  float:right;
+}
+.gender-type{
+  width:120px;
+  
+}
+.close-account{
+  margin:48px 0px 40px 15px;
+  
+}
+
+
+.cropperBtn {
+  width: 100px;
+  margin: 0px;
+
+}
+
+
+/**/
+
+.setPage {
+  padding: 30px;
+}
+
+.fileUpload {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.fileUpload input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.img-circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.button {
+  margin-top: 30px;
+  background:#494D51;
+  border-radius:30px;
+  padding:5px 30px;
+  color:#fff;
+}
+
+
+/*toggle*/
+
+.accordion-i {
+  width: 30px;
+}
+
+.accordion-checkbox {
+  float: left;
+  margin-right: 20px;
+}
+
+.setting-item {
+  padding: 5px 5px 5px 20px;
+}
+
+.width-300px {
+  width: 300px;
+}
+
+.material-switch>input[type="checkbox"] {
+  display: none;
+}
+
+.material-switch>label {
+  cursor: pointer;
+  height: 0px;
+  position: relative;
+  width: 40px;
+}
+
+.material-switch>label::before {
+  background: rgb(0, 0, 0);
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  content: '';
+  height: 16px;
+  margin-top: -8px;
+  position: absolute;
+  opacity: 0.3;
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+}
+
+.material-switch>label::after {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  content: '';
+  height: 24px;
+  left: -4px;
+  margin-top: -8px;
+  position: absolute;
+  top: -4px;
+  transition: all 0.3s ease-in-out;
+  width: 24px;
+}
+
+.material-switch>input[type="checkbox"]:checked+label::before {
+  background: inherit;
+  opacity: 0.5;
+}
+
+.material-switch>input[type="checkbox"]:checked+label::after {
+  background: inherit;
+  left: 20px;
+}
+
+
+/*/////checkbox////*/
+
+.fa-cog {
+  color: #00b3ee;
+}
+
+.tab-title {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.control-label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+/* USER PROFILE PAGE */
+
+.tab-pane {
+  padding: 30px 5px;
+}
+
+.card {
+  /*margin-top: 20px;*/
+  padding: 30px;
+  background-color: rgba(214, 224, 226, 0.2);
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.card.hovercard {
+  position: relative;
+  padding-top: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.card.hovercard .card-background {
+  height: 130px;
+}
+
+.card-background img {
+  -webkit-filter: blur(25px);
+  -moz-filter: blur(25px);
+  -o-filter: blur(25px);
+  -ms-filter: blur(25px);
+  filter: blur(25px);
+  margin-left: -100px;
+  margin-top: -200px;
+  min-width: 130%;
+}
+
+.card.hovercard .useravatar {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+}
+
+.card.hovercard .useravatar img {
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+.card.hovercard .card-info {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+}
+
+.card.hovercard .card-info .card-title {
+  padding: 0 5px;
+  font-size: 20px;
+  line-height: 1;
+  color: #262626;
+  background-color: rgba(255, 255, 255, 0.1);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.card.hovercard .card-info {
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 20px;
+  color: #737373;
+  text-overflow: ellipsis;
+}
+
+.card.hovercard .bottom {
+  padding: 0 20px;
+  margin-bottom: 17px;
+}
+
+.btn-pref .btn {
+  -webkit-border-radius: 0 !important;
+  outline: 0px !important;
+}
+
+.btn-primary {
+  color: #1f2836 !important;
+  background-color: #eee !important;
+  border: 0px !important;
+  border-bottom: 3px solid #099DED !important;
+}
+
+.btn-default {
+  color: #1f2836 !important;
+  border: 0px !important;
+  border-bottom: 3px solid #fff !important;
+}
+
+.user {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #1f2836;
+}
+
+.information {
+  font-size: 18px;
+  padding: 10px;
+  font-weight: 700;
+}

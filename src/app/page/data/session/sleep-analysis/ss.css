@@ -1,0 +1,46 @@
+.sleep-stage {
+    margin-top: 8px;
+}
+
+.sleep-stage .g-line {
+    margin-top: 10px;
+}
+
+.sleep-stage .item {
+    float: left;
+    height: 35px;
+}
+
+.sleep-stage .item.line {
+    width: calc(-74%);
+}
+
+.sleep-stage .item.line.awake {
+    background: #FD2000;
+    width: 20px;
+}
+
+.sleep-stage .item.line.rem {
+    background: #FF9400;
+    width: 150px;
+}
+
+.sleep-stage .item.line.shallow {
+    background: #FFFC00;
+    width: 110px;
+}
+
+.sleep-stage .item.line.deep {
+    background: #9DFA00;
+    width: 90px;
+}
+
+.sleep-stage .item.value {
+    width: 100px;
+    margin-left: 10px;
+    font-size: 13px;
+}
+
+.sleep-stage .item.value .meaning {
+    color: gray;
+}

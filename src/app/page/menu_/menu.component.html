@@ -1,0 +1,41 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li>
+            <a routerLink="/" class="activate ripplelink" id="news"><img src="/img/menu-new.png" class="img_icon">News<span class="ink animate"></span></a>
+        </li>
+        <li>
+            <a routerLink="/data" class="ripplelink" id="data"><img src="/img/menu-data.png" class="img_icon">Data<span class="ink animate"></span></a>
+        </li>
+        <li>
+            <a routerLink="/patients" class="ripplelink" id="patients"><img src="/img/menu-patient.png" class="img_icon">Patients<span class="ink animate"></span></a>
+        </li>
+        <li>
+            <a routerLink="/network" class="ripplelink " id="network"><img src="/img/menu-network.png" class="img_icon">Network<span class="ink animate"></span></a>
+        </li>
+        <li data-toggle="collapse" data-target="#analytics-sub" class="collapsed">
+            <a routerLink="/analytics" class="ripplelink" id="analytics"><img src="/img/menu-analytics.png" class="img_icon">Analytics<i class="fa fa-angle-down r-rotation"></i><span class="ink animate"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="analytics-sub">
+            <li><a routerLink="/analytics" class="ripplelink sub-a" id="analytics-1"><i class="fa fa-fw fa-bed"></i>Sleep Analysis<span class="ink animate"></span></a></li>
+            <li><a routerLink="/analytics" class="ripplelink sub-a" id="analytics-2"><i class="fa fa-fw fa-heartbeat"></i>Arrhythmia Analysis<span class="ink animate"></span></a></li>
+            <li><a routerLink="/analytics" class="ripplelink sub-a" id="analytics-3"><i class="fa fa-fw  fa-line-chart"></i>Stroke Rist Analysis<span class="ink animate"></span></a></li>
+            <li><a routerLink="/analytics" class="ripplelink sub-a" id="analytics-4"><i class="fa fa-fw fa-plus-square"></i>Add Analysis Modules<span class="ink animate"></span></a></li>
+        </ul>
+        <li>
+            <a routerLink="/setting" class="ripplelink " id="settings"><img src="/img/menu-setting.png" class="img_icon">Settings<span class="ink animate"></span></a>
+        </li>
+        <li data-toggle="collapse" data-target="#upgrade-sub" class="collapsed">
+            <a routerLink="/upgrade" class="ripplelink " id="upgrade"><img src="/img/menu-upgrade.png" class="img_icon">Upgrade<i class="fa fa-angle-down r-rotation"></i><span class="ink animate"></span></a>
+        </li>
+        <ul class="sub-menu collapse" id="upgrade-sub">
+            <li><a routerLink="/upgrade" class="ripplelink sub-a" id="upgrade-1"><i class="fa fa-fw fa-bed"></i>Subscription<span class="ink animate"></span></a>
+            </li>
+            <li><a routerLink="/upgrade" class="ripplelink sub-a" id="upgrade-2"><i class="fa fa-fw fa-heartbeat"></i> Analysis Module<span class="ink animate"></span></a>
+            </li>
+        </ul>
+        <li>
+            <a (click)="logOut()" class="ripplelink" style="cursor: pointer; " id="logout"><img src="/img/menu-logout.png" class="img_icon">Logout<span class="ink animate"></span></a>
+        </li>
+    </ul>
+</div>

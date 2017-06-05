@@ -1,0 +1,14 @@
+.img-circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.notification {
+    margin: 20px 100px;
+}
+
+.name {
+    font-family: coolvetica;
+    font-size: 15px;
+}

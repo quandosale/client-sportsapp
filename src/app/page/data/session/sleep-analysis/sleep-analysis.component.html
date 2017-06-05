@@ -1,0 +1,69 @@
+<div class="session">
+  <div class="session-content">
+    <div class="pull-left status-bar">
+      <img src="/img/type-sleep.png">
+      <div class="time">10:00 AM</div>
+      <span class="r-hvalue">64</span>
+      <span class="r-description">Resting Heart Rate</span>
+      <span class="m-hvalue" style="font-size: 30px;display: inline-block;margin-left: 20px;">09:08</span>
+      <span class="m-description">Total Sleep Duration</span>
+
+    </div>
+    <div class="container-fluid">
+
+      <div class="col-xs-11 hidden" style="font-size: 18px">
+        Session View - Sleep Analysis
+        <span class="text-nowrap">
+                {{date}}
+            </span>
+      </div>
+      <div class="col-xs-1 pull-right">
+        <div class="closebtn" (click)="backClicked()">
+          &times;
+        </div>
+      </div>
+    </div>
+
+    <div class="graph clearfix">
+      <div class="sleep-stage ht-zone">
+        <div class="hrt-comment">Time in sleep stages</div>
+        <div class="g-line clearfix">
+          <div class="item line awake"></div>
+          <div class="item value">
+            22 minutes
+            <span class="meaning">Awake</span></div>
+        </div>
+        <div class="g-line clearfix">
+          <div class="item line rem"></div>
+          <div class="item value">
+            321 minutes
+            <span class="meaning">REM</span></div>
+        </div>
+        <div class="g-line clearfix">
+          <div class="item line shallow"></div>
+          <div class="item value">
+            149 minutes
+            <span class="meaning">Shallow Sleep</span></div>
+        </div>
+        <div class="g-line clearfix">
+          <div class="item line deep"></div>
+          <div class="item value">
+            202 minutes
+            <span class="meaning">Deep Sleep</span></div>
+        </div>
+      </div>
+
+      <div class="heart-rate pull-right">
+        <div class="hrt1-comment">Sleep quality score</div>
+        <sleep-quality-chart [dataSetId]="dataSetId" [dataSetTime]="date"></sleep-quality-chart>
+      </div>
+      <div class="clearfix"></div>
+      <div class="calmness" style="height: 210px;width:100%;">
+        <div class="hrt2-comment">Sleep map</div>
+        <sleep-map [dataSetId]="dataSetId" [dataSetTime]="date"></sleep-map>
+      </div>
+
+
+    </div>
+  </div>
+</div>

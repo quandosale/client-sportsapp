@@ -1,0 +1,146 @@
+.upgrade {
+    background: #fff;
+    margin: 10px 40px 0 50px;
+    border-radius: 4px;
+    padding: 30px 40px 10px 20px;
+}
+
+.upgrade-table {
+    max-width: 1000px;
+}
+
+
+/* Create three columns of equal width */
+
+.columns {
+    float: left;
+    width: 20%;
+    color: #7F7F7F;
+}
+
+.columns.description {
+    color: #404040;
+}
+
+.columns.current {
+    color: #141414;
+}
+
+.columns.current .price {
+    background: #D1D1D1;
+}
+
+.columns:first-of-type .price .header {
+    border-top-left-radius: 4px;
+}
+
+.columns.last .price {
+    border-right: 1px #EAEAEA solid;
+}
+
+.columns.last .price .header {
+    border-top-right-radius: 4px;
+}
+
+
+/* Style the list */
+
+.price {
+    list-style-type: none;
+    border-left: 1px solid #EAEAEA;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+
+/* Add shadows on hover */
+
+.price:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.price-value {
+    color: #333333;
+    font-weight: bold;
+}
+
+
+/* Pricing header */
+
+.price .header {
+    background-color: #22262E;
+    color: #F6F6F6;
+}
+
+
+/* List items */
+
+.price li {
+    border-bottom: 1px solid #EAEAEA;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.columns.description .price li {
+    text-align: left;
+}
+
+
+/* Grey list item */
+
+.price .grey {
+    background-color: #eee;
+    font-size: 20px;
+}
+
+
+/* The "Sign Up" button */
+
+.select {
+    background-color: #2E343E;
+    border: none;
+    color: #E4E5E6;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    /*font-size: 18px;*/
+}
+
+.btn-process {
+    margin-top: 30px;
+    background: #595E65;
+    color: #FFF;
+    padding: 10px 30px;
+    font-size: 18px;
+    line-height: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-process .circle {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #FFF;
+    color: #595E65;
+    margin-left: 20px;
+    vertical-align: bottom;
+}
+
+.btn-process .circle i {
+    top: 0px;
+    line-height: 18px;
+}
+
+
+/* Change the width of the three columns to 100%
+(to stack horizontally on small screens) */
+
+@media only screen and (max-width: 600px) {
+    .columns {
+        width: 100%;
+    }
+}

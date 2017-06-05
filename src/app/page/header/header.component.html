@@ -1,0 +1,36 @@
+<header>
+    <div class="logo">
+        <div class="logo-rect">
+            <img src="img/calm.png">
+        </div>
+    </div>
+    <div class="header-right">
+
+        <div class="bell" [popover]="notificationpop">
+            <i class="fa fa-bell-o"></i>
+        </div>
+        <div class="alarm" [hidden]="notificationsShow">
+            {{notificationsCount}}
+        </div>
+
+        <div id="notification">
+            <popover-content #notificationpop [closeOnClickOutside]="true" placement="auto bottom" [closeOnMouseOutside]="true" (click)="gotoNotification()">
+                <div *ngFor="let notification of notifications" class="row">
+                    <div class="col-xs-2" style="padding: 10px"><img [src]="notification.sender_photo" class="img-circle"></div>
+                    <div class="col-xs-10">
+                        <div class="notification_name">{{notification.sender_firstname}}.{{notification.sender_lastname}}</div>
+                        <div class="notification_msg">{{notification.message}}</div>
+                    </div>
+                    <div class="col-sm-11" style="height: 1px; background-color:  #999; margin: 0px 12px"></div>
+                </div>
+
+                <div style="text-align: center; color: #999; padding-top:10px"> All notification </div>
+            </popover-content>
+        </div>
+        <div class="today-description">Today</div>
+        <div class="today-bar"></div>
+        <div class="today">
+            {{today}}
+        </div>
+    </div>
+</header>

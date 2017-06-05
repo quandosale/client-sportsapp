@@ -1,0 +1,296 @@
+.session {
+    background: inherit;
+}
+
+.session .title {
+    font-size: 1.7em
+}
+
+.session .closebtn {
+    font-size: 25px;
+    line-height: 36px;
+    padding: 0px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    /*display: inline-block;*/
+    float: right;
+    background-color: #d9edf7;
+}
+
+.session .closebtn:hover {
+    background: #2497E3;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.session .head {
+    /*background: gray;*/
+}
+
+.session .head .photo i.icon {
+    font-size: 50px;
+}
+
+.session .head .photo .name {
+    font-size: 2.9vw;
+    padding: 12px;
+    height: 60px;
+}
+
+.session .graph {
+    margin: auto;
+    /*max-width: 1000px;*/
+    border: #000 solid 1px;
+    border-radius: 20px;
+    padding: 40px;
+    /*max-width: 800px;*/
+    margin-top: 70px;
+    /*height: 100vh;*/
+    background: #fff;
+}
+
+.session .graph .underline {
+    background: #333333;
+    height: 5px;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.session .graph .text-muted {
+    color: #a79e9a;
+}
+
+.session .graph .timezone .item {
+    outline: 1px gray solid;
+    display: block;
+    float: left;
+    width: 100%;
+    /*height: 30px;*/
+    margin-bottom: 25px;
+}
+
+.session .graph .timezone .plot {
+    outline: 1px yellow solid;
+    float: left;
+    width: calc(100% - 100px);
+}
+
+.session .graph .timezone .plot .bar {
+    border: 1px black solid;
+    background: #336600;
+    height: 20px;
+    float: left;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.session .graph .timezone .plot .bar.deep {
+    background: #0bbb30;
+}
+
+.session .graph .timezone .plot .bar.right {
+    background: #4cb2c1;
+}
+
+.session .graph .timezone .plot .bar.normal {
+    background: #e9df71;
+}
+
+.session .graph .timezone .meaning {
+    /*height: 200px;*/
+    float: right;
+    display: block;
+    width: 80px;
+    margin: 0 10px;
+    outline: 1px red solid;
+}
+
+.session .graph .timezone .value {
+    float: left;
+    width: 110px;
+    outline: 1px green solid;
+    padding-left: 15px;
+}
+
+.show-1100 {
+    display: none;
+}
+
+@media screen and (max-width: 1100px) {
+    .hidden-1100 {
+        display: none;
+    }
+    .show-1100 {
+        display: inline;
+    }
+    .session .graph .timezone .value {
+        width: 30px;
+    }
+}
+
+.ecg {
+    background-color: #e7e7e7;
+    margin: 30px;
+    /*padding: 20px;*/
+}
+
+.ecg .chart {
+    width: 100%;
+    height: 300px;
+    display: block;
+}
+
+.ecg .playgroup {
+    display: block;
+    /*width: 320px;*/
+    margin: auto;
+    margin-top: 3px;
+    padding: 2px;
+    /*padding-left: 40px;*/
+    text-align: center;
+    border-radius: 10px;
+}
+
+.rect {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 12px;
+    padding: 2px;
+    width: 29px;
+    height: 29px;
+    /*background: gray;*/
+    border-radius: 2px;
+}
+
+.rect.disable,
+.rect.disable {
+    opacity: .6;
+}
+
+.rect:hover {
+    background: gray;
+}
+
+.control {
+    width: 21px;
+    height: 21px;
+}
+
+.seekbar {
+    margin-top: 7px;
+    /*outline: 1px red solid;*/
+}
+
+.remainbar {
+    position: absolute;
+    height: 5px;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    background: white;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    /* WebKit */
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #2497E3;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #2497E3;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #2497E3;
+}

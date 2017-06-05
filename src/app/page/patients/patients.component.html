@@ -1,0 +1,460 @@
+<div class="patient">
+    <p-growl [value]="msgs" sticky="sticky"></p-growl>
+    <p-confirmDialog width="425"></p-confirmDialog>
+    <div [ngBusy]="busy"></div>
+
+    <!--dialog-->
+    <p-dialog [(visible)]="display" modal="modal" width="800" responsive="true">
+        <div class="col-sm-8 text-center">
+            <img-cropper #cropper [image]="data2" [settings]="cropperSettings2"></img-cropper>
+            <div class="fileUpload btn btn-primary">
+                <span>Change picture</span>
+                <input id="custom-input" type="file" class="upload" (change)="fileChangeListener($event)">
+            </div>
+        </div>
+        <div class="col-sm-4 text-center">
+            <img [src]="data2.image" class="img-responsive cropperImage" [width]="cropperSettings2.croppedWidth" [height]="cropperSettings2.croppedHeight" onerror="this.src='img/default-error.jpg';">
+            <button class="btn btn-success cropperBtn text-center" (click)="imageSave()"> Save </button>
+        </div>
+    </p-dialog>
+    <!--add patient-->
+    <div id="mySidenav" class="sidenav">
+        <a class="closebtn" (click)="closeNav()">&times;</a>
+        <div class="col-md-12 box">
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <img [src]="src" class="img-responsive img-thumbnail " (click)="showDialog()" onerror="this.src='img/default-error.jpg';">
+                </div>
+                <div class="col-md-12 col-sm-12 ">
+                    <form class="form-horizontal">
+                        <fieldset>
+                            <!-- Form Name -->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!FirstName.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="FirstName">First Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.firstname" id="FirstName" #FirstName="ngModel" name="FirstName" type="text" placeholder="First Name" class="form-control input-md " required animated fadeInRight/>
+
+                                    </div>
+                                    <div *ngIf="!onRegister&&!FirstName.valid" class="required animated fadeInRight">FirstName is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Lastname.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Lastname">Last Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.lastname" id="Lastname" #Lastname="ngModel" name="Lastname" type="text" placeholder="Last Name" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Lastname.valid" class="required animated fadeInRight">Lastname is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Birthday.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Date Of Birth">Birthday</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-birthday-cake fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.birthday" type="date" id="Date Of Birth" #Birthday="ngModel" name="Date Of Birth" placeholder="Date Of Birth" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Birthday.valid" class="required animated fadeInRight">Birthday is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Height.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Father">Height</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-male fa-cog" style="font-size: 20px;"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.height" id="Father" #Height="ngModel" name="Father" type="text" placeholder="160" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Height.valid" class="required animated fadeInRight">Height is required.</div>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Gender">Gender</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <label class="radio-inline" for="Gender-0">
+                                        <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-0" value="Male" checked>
+                                        Male
+                                    </label>
+                                    <label class="radio-inline" for="Gender-1">
+                                        <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-1" value="Female">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Phone.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Phone number ">Phone</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.phone" id="Phone number " #Phone="ngModel" name="Phone number " type="text" placeholder="Primary Phone number " class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Phone.valid" class="required animated fadeInRight">Phone is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Location.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service location">Location</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-street-view fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.location" id="Available Service location" #Location="ngModel" name="Available Service location" type="text" placeholder="Location" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Location.valid" class="required animated fadeInRight">Location is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!City.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service Area">City</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-map fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.city" id="Available Service Area" #City="ngModel" name="Available Service Area" type="text" placeholder="City" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!City.valid" class="required animated fadeInRight">City is required.</div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <button class="btn btn-success button" (click)="patientsRegister()">Add</button>
+                        <button class="btn btn-danger button" (click)="closeNav()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--edit patient-->
+    <div id="mySidenavEdit" class="sidenav">
+        <a class="closebtn" (click)="closeNav()">&times;</a>
+        <div class="col-md-12 box">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+
+                    <img [src]="src" class="img-responsive img-thumbnail " (click)="showDialog()" onerror="this.src='img/default-error.jpg';">
+
+                </div>
+                <div class="col-md-12 col-sm-12 ">
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                            <div class="form-group" [class.disable-btn]="selectedpatient.owner === 'MyPatient'">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Doctor name"><b>Doctor</b></label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group" style="padding-top: 6px">
+                                        <b>{{selectedpatient.doctor.lastname}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!FirstName.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="FirstName">First Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.firstname" id="FirstName" #FirstName="ngModel" name="FirstName" type="text" placeholder="First Name" class="form-control input-md " required animated fadeInRight/>
+
+                                    </div>
+                                    <div *ngIf="!onRegister&&!FirstName.valid" class="required animated fadeInRight">FirstName is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Lastname.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Lastname">Last Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.lastname" id="Lastname" #Lastname="ngModel" name="Lastname" type="text" placeholder="Last Name" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Lastname.valid" class="required animated fadeInRight">Lastname is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Birthday.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Date Of Birth">Birthday</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-birthday-cake fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.birthday" type="date" id="Date Of Birth" #Birthday="ngModel" name="Date Of Birth" placeholder="Date Of Birth" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Birthday.valid" class="required animated fadeInRight">Birthday is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Height.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Father">Height</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-male fa-cog" style="font-size: 20px;"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.height" id="Father" #Height="ngModel" name="Father" type="text" placeholder="160" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Height.valid" class="required animated fadeInRight">Height is required.</div>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Gender">Gender</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <label class="radio-inline" for="Gender-0">
+                                  <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-0" value="Male" checked="checked">
+                                  Male
+                                  </label>
+                                    <label class="radio-inline" for="Gender-1">
+                                  <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-1" value="Female">
+                                  Female
+                                  </label>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Phone.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Phone number ">Phone</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.phone" id="Phone number " #Phone="ngModel" name="Phone number " type="text" placeholder="Primary Phone number " class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Phone.valid" class="required animated fadeInRight">Phone is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Location.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service location">Location</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-street-view fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.location" id="Available Service location" #Location="ngModel" name="Available Service location" type="text" placeholder="Location" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Location.valid" class="required animated fadeInRight">Location is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!City.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service Area">City</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon ">
+                                            <i class="fa fa-map fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.city" id="Available Service Area" #City="ngModel" name="Available Service Area" type="text" placeholder="City" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!City.valid" class="required animated fadeInRight">City is required.</div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <button class="btn btn-warning button" (click)="updatePatient()" [class.disable-btn]="selectedpatient.owner !== 'MyPatient'">Save</button>
+                        <button class="btn btn-danger button" (click)="closeNav()">Cancel</button>
+                        <p [class.disable-btn]="selectedpatient.owner === 'MyPatient'" style="color:#d43f3a; margin-top: 10px;"><span class="glyphicon glyphicon-remove-sign"></span>Sorry, You can't change patient!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--</div>delete patient-->
+    <div id="mySidenavDelete" class="sidenav">
+        <a class="closebtn" (click)="closeNav()">&times;</a>
+        <div class="col-md-12 box">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+
+                    <img [src]="src" class="img-responsive img-thumbnail " (click)="showDialog()" onerror="this.src='img/default-error.jpg';">
+
+                </div>
+                <div class="col-md-12 col-sm-12 ">
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                            <div class="form-group" [class.disable-btn]="selectedpatient.owner === 'MyPatient'">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Doctor name"><b>Doctor</b></label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group" style="padding-top: 6px">
+                                        <b>{{selectedpatient.doctor.lastname}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!FirstName.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="FirstName">First Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.firstname" id="FirstName" #FirstName="ngModel" name="FirstName" type="text" placeholder="First Name" class="form-control input-md " required animated fadeInRight/>
+
+                                    </div>
+                                    <div *ngIf="!onRegister&&!FirstName.valid" class="required animated fadeInRight">FirstName is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Lastname.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Lastname">Last Name</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-user fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.lastname" id="Lastname" #Lastname="ngModel" name="Lastname" type="text" placeholder="Last Name" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Lastname.valid" class="required animated fadeInRight">Lastname is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Birthday.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Date Of Birth">Birthday</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-birthday-cake fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.birthday" type="date" id="Date Of Birth" #Birthday="ngModel" name="Date Of Birth" placeholder="Date Of Birth" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Birthday.valid" class="required animated fadeInRight">Birthday is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Height.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Father">Height</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-male fa-cog" style="font-size: 20px;"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.height" id="Father" #Height="ngModel" name="Father" type="text" placeholder="160" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Height.valid" class="required animated fadeInRight">Height is required.</div>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Gender">Gender</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <label class="radio-inline" for="Gender-0">
+                                  <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-0" value="Male" checked="checked">
+                                  Male
+                                  </label>
+                                    <label class="radio-inline" for="Gender-1">
+                                  <input [(ngModel)]="selectedpatient.gender" type="radio" name="Gender" id="Gender-1" value="Female">
+                                  Female
+                                  </label>
+                                </div>
+                            </div>
+                            <!-- Multiple Radios (inline) -->
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Phone.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Phone number ">Phone</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-phone fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.phone" id="Phone number " #Phone="ngModel" name="Phone number " type="text" placeholder="Primary Phone number " class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Phone.valid" class="required animated fadeInRight">Phone is required.</div>
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!Location.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service location">Location</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-street-view fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.location" id="Available Service location" #Location="ngModel" name="Available Service location" type="text" placeholder="Location" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!Location.valid" class="required animated fadeInRight">Location is required.</div>
+                                </div>
+                            </div>
+                            <div class="form-group" [ngClass]="{ 'has-error': !onRegister&&!City.valid }">
+                                <label class="col-md-4 col-sm-4 col-xs-4 control-label" for="Available Service Area">City</label>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-map fa-cog"></i>
+                                        </div>
+                                        <input [(ngModel)]="selectedpatient.city" id="Available Service Area" #City="ngModel" name="Available Service Area" type="text" placeholder="City" class="form-control input-md" required animated fadeInRight/>
+                                    </div>
+                                    <div *ngIf="!onRegister&&!City.valid" class="required animated fadeInRight">City is required.</div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <button class="btn btn-danger button" (click)="confirm()" [class.disable-btn]="selectedpatient.owner !== 'MyPatient'">Delete</button>
+                        <button class="btn btn-danger button" (click)="closeNav()">Cancel</button>
+                        <p [class.disable-btn]="selectedpatient.owner === 'MyPatient'" style="color:#d43f3a; margin-top: 10px;"><span class="glyphicon glyphicon-remove-sign"></span>Sorry, You can't change patient!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--list patients-->
+    <div id="main">
+        <p-dataList [value]="myPatients" [paginator]="true" [rows]="10">
+            <header>
+                <span class="title">Patients</span>
+                <div style="float:right">
+                    <button type="button" class="btn btn-success btn-circle" (click)="openNavNew()" pTooltip="Add Patient" tooltipPosition="bottom"><i class="glyphicon  glyphicon-plus-sign" ></i></button>
+                    <button type="button" [disabled]="isOn" class="btn btn-warning btn-circle" (click)="openNavEditWithOutP()" pTooltip="Edit Patient" tooltipPosition="bottom"><i class="glyphicon glyphicon-edit" ></i></button>
+                    <button type="button" [disabled]="isOn" class="btn btn-danger btn-circle" (click)="openNavDeleteWithOutP()" pTooltip="Delete Patient" tooltipPosition="bottom"><i class="glyphicon glyphicon-minus-sign" ></i></button>
+                </div>
+            </header>
+            <template let-patient let-index=index>
+            <!--(dblclick)="openNavEdit(patient)"-->
+            <!--patient._id, patient.photo, patient.doctor, patient.firstname, patient.lastname, patient.birthday, patient.height, patient.gender, patient.phone, patient.location, patient.city, patient.owner-->
+              <div class="ui-grid ui-grid-responsive ui-fluid listMyPatient"  (click)="PatientSelect(index,patient._id, patient.photo, patient.doctor.id,patient.doctor.lastname, patient.firstname, patient.lastname, patient.birthday, patient.height, patient.gender, patient.phone, patient.location, patient.city, patient.owner)"    [class.selected]="patient._id === selectedpatient._id">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-1" style="text-align:center">
+                        <img [src]="patient.photo" class="img-circle" onerror="this.src='img/default-error.jpg';">
+                    </div>
+                    <div class="ui-grid-col-3 listText"><div class="patientsName">{{patient.lastname}}</div></div>
+                    <div class="ui-grid-col-3 listText">{{patient.birthday}}</div>
+                    <div class="ui-grid-col-1 listText">{{patient.gender}}</div>
+                    <div class="ui-grid-col-4 listText">{{patient.owner}}</div>
+                </div>
+              </div>
+          </template>
+        </p-dataList>
+    </div>
+</div>

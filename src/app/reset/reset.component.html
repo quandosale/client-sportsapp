@@ -1,0 +1,36 @@
+<div class="container">
+    <p-growl [value]="msgs" sticky="sticky"></p-growl>
+    <div class="container">
+        <div class="container text-center">
+            <div id="polina" class="container">
+                <form class="form-horizontal animated bounceInDown">
+
+                    <!--password-->
+                    <div class="form-group has-success has-feedback">
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password" [ngClass]="{ 'error-form-control': !onRegister&&!password.valid }" required>
+                            <span class="glyphicon glyphicon-lock form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onRegister&&!password.valid }"></span>
+                        </div>
+                    </div>
+                    <div *ngIf="!password.valid&&!onRegister" class="animated fadeInRight"><label class="error">Please enter your password.</label></div>
+
+
+                    <!--Confirm Password-->
+                    <div class="form-group has-success has-feedback">
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" [(ngModel)]="rePassword" name="repassword" #repassword="ngModel" placeholder="Confirm Password" [ngClass]="{ 'error-form-control': !onRegister&&!repassword.valid||!onPassword }" required>
+                            <span class="glyphicon glyphicon-lock form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onRegister&&!repassword.valid||!onPassword }"></span>
+                        </div>
+                    </div>
+                    <div *ngIf="!repassword.valid&&!onRegister" class="animated fadeInRight"><label class="error">Please re-enter your password.</label></div>
+                    <div *ngIf="!onPassword" class="animated fadeInRight"><label class="error">Please enter the same password as above.</label></div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn create btn-success" (click)="change()">Change Password</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

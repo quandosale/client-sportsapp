@@ -1,0 +1,60 @@
+.mycalendar {
+    width: 100%;
+    /*min-width: 218px;*/
+    background: transparent;
+    margin-bottom: 20px;
+    padding: 15px;
+    padding-top: 0px;
+    height: 230px;
+    /*border-radius: 4px;*/
+    box-shadow: 0px 0px 1px 0px gray;
+    /*border: 1px gray solid;*/
+}
+
+.calendar-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0px 15px;
+    background: #B9B9B9;
+    margin: 0 -15px;
+    /*outline: 1px blue solid;*/
+}
+
+.calendar-header .monthbtn {
+    width: 40px;
+    cursor: pointer;
+    padding: 10px;
+    line-height: 100%;
+    /*outline: 1px red solid;*/
+}
+
+.calendar-header .monthbtn:hover .calendar-dec,
+.calendar-header .monthbtn:hover .calendar-inc {
+    color: red;
+}
+
+.calendar-header .monthbtn .calendar-dec,
+.calendar-header .monthbtn .calendar-inc {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    /*outline: 1px yellow solid;*/
+}
+
+.calendar-header .month {
+    font-size: 25px;
+}
+
+.calendar-header .year {
+    font-size: 14px;
+    /*color: #B8E5FB;*/
+    margin-top: -5px;
+}
+
+.cal-month-view .cal-header {
+    text-align: center;
+    font-weight: bolder;
+}

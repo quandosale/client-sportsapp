@@ -1,0 +1,7 @@
+<div class="hrt">
+  <div id="sleep-quality" (window:resize)="onHrtResize($event)">
+  </div>
+  <div class="overlayer" [class.Show]="isBusy"></div>
+  <i class="fa fa-spinner busySplash" [class.Show]="isBusy"></i>
+  <div id='tooltip'></div>
+</div>

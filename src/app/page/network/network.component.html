@@ -1,0 +1,71 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div [ngBusy]="busy"></div>
+<div class="div_network clearfix">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12 network">
+            Friends
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+            <input [(ngModel)]="searchText" type="search" placeholder="Search">
+            <button type="button" class="btn btn-search " (click)="netWorkAdd()" pTooltip="Add Network" tooltipPosition="bottom">
+                Search
+            </button>
+            <button type="button" class="btn btn-search " (click)="netWorkAdd()" pTooltip="Add Network" tooltipPosition="bottom">
+                Add
+            </button>
+
+
+        </div>
+    </div>
+
+
+
+    <div class=" user" *ngFor="let user of netUsers | mysearch : searchText ; let index = index">
+        <div class="row">
+            <div class="col-md-2 col-sm-4 col-xs-12 text-center">
+                <img [src]="user.photo" class=" img-thumbnail" [popover]="userpop" onerror="this.src='img/default-error.jpg';">
+                <popover-content #userpop [closeOnClickOutside]="true" placement="right" [closeOnMouseOutside]="false">
+
+                    <div class="col-sm-9 col-xs-9">
+                        <b>Dr.{{user.secondname}}</b> <br>
+                        <span style="color: #099DED">{{user.address1}} {{user.address2}} in {{user.city}}, {{user.country}} </span><br>
+                        <b><i><span style="color: #F77D0E">Dr.{{user.secondname}} has {{user.numberOfPatients}} patients</span></i></b><br>
+                        <span>Send a Networking request to Dr.{{user.secondname}}</span><br>
+                        <div><input type="checkbox" [(ngModel)]="shareCheck" class="requset_check"><span>Share my patient's data with Dr.{{user.secondname}}</span></div>
+                        <div><input type="checkbox" [(ngModel)]="requestCheck" class="requset_check"><span>Request to see Dr.{{user.secondname}}'s patient data</span></div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <img [src]="user.photo" class=" img_requset" onerror="this.src='img/default-error.jpg';">
+                    </div>
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-danger button_requset" (click)="deleteNetwork(user, user._id)">Delete</button>
+                        <button type="button" class="btn btn-warning button_requset" (click)="sendRequset(user._id)">Request</button>
+                    </div>
+                </popover-content>
+            </div>
+
+            <div class="col-md-4 col-sm-8 col-xs-12">
+                <div class="username"><b> Dr. {{user.secondname}} </b></div>
+                <div class="details">Doctor Account</div>
+                <div class="details">You can see <span>Dr. {{user.secondname}}'s data</span></div>
+                <div class="details">Dr. {{user.secondname}}'s cannot see <span>your data</span></div>
+            </div>
+            <div class="col-md-0 col-sm-4 col-xs-0"></div>
+            <!--<div class="col-md-6 col-sm-8 col-xs-12">
+                <div class="carousel_Patients" *ngIf="user.patientsPhoto!=null">
+                    <p-carousel headerText=" Dr. {{user.secondname}}'s Patients" [value]="user.patientsPhoto" [numVisible]="5">
+                        <template let-patient>
+                            <img [src]="patient" class="img_patient text-center" pTooltip="patient" tooltipPosition="bottom" onerror="this.src='img/default-error.jpg';">
+                        </template>
+                    </p-carousel>
+                </div>
+            </div>-->
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 lastseen">
+            Last Seen <span>yesterday</span>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12" style="height: 1px; background: #E0E0E0 "></div>
+    </div>
+
+
+</div>

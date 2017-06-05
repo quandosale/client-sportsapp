@@ -1,0 +1,159 @@
+<div class="user clearfix">
+  <p-growl [value]="msgs" sticky="sticky"></p-growl>
+  <div class="col-xs-12 row">
+    <h3 class="title">Profile</h3>
+
+    <div class="well">
+      <form class="form-horizontal">
+        <fieldset>
+          
+          <div class="col-md-3 col-sm-12 ">
+            <h4>Account</h4>
+            <img [src]="src" class="img-responsive img-thumbnail " (click)="showDialog()" onerror="this.src='img/default-error.jpg';">
+            <p-dialog [(visible)]="display" modal="modal" width="800" responsive="true">
+              <div class="col-sm-8">
+                <img-cropper #cropper [image]="data2" [settings]="cropperSettings2"></img-cropper>
+                <div class="fileUpload btn btn-warning">
+                  <span>Change picture</span>
+                  <input id="custom-input" type="file" class="upload" (change)="fileChangeListener($event)">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <img [src]="data2.image" class="img-responsive cropperImage" [width]="cropperSettings2.croppedWidth" [height]="cropperSettings2.croppedHeight"
+                  onerror="this.src='img/default-error.jpg';">
+                <button class="btn btn-success cropperBtn text-center" (click)="imageSave()"> Save </button>
+              </div>
+            </p-dialog>
+            <h4>Basic</h4>
+            <h4>Change Password</h4>
+            <h4>Subscription</h4>
+            <h4>Privacy</h4>
+          </div>
+
+          <div class="col-md-7 col-sm-12" style="margin-top:43px">
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">First Name</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+                  <input [(ngModel)]="user.firstname" name="user firstname" type="text" placeholder="First Name" class="form-control input-md custom-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Last Name</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input [(ngModel)]="user.secondname" name="user secondname" type="text" placeholder="Last Name" class="form-control input-md custom-input"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Address</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input [(ngModel)]="user.address1" name="user address1" type="text" placeholder="Address" class="form-control input-md custom-input">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 control-label"></label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input [(ngModel)]="user.address2"  name="user address2" type="text" placeholder="Address" class="form-control input-md custom-input">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-4 control-label">City</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input [(ngModel)]="user.city" name="user city" type="text" placeholder="City" class="form-control input-md custom-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Country</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input [(ngModel)]="user.country" name="user country" type="text" placeholder="Country" class="form-control input-md custom-input">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Birthday</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+                  <input name="user birthday" type="date" placeholder="Birthday" class="form-control input-md custom-input">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Height</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input name="user heightft" type="text" placeholder="0 ft" class="form-control input-md custom-input h-ft">
+                  <input name="user heightin" type="text" placeholder="3 in" class="form-control input-md custom-input h-in">
+                   <select class="form-control custom-input h-type" id="sel1">
+                    <option>feet</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Weight</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+
+                  <input name="user weight1" type="text" placeholder="0" class="form-control input-md custom-input h-ft">
+                  
+                   <select class="form-control custom-input w-type" id="sel1">
+                    <option>lbs</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-xs-4 control-label">Gender</label>
+              <div class="col-xs-8">
+                <div class="input-group">
+                   <select class="form-control custom-input gender-type">
+                    <option>Female</option>
+                    <option>Male</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          
+          </div>
+
+        </fieldset>
+      </form>
+<h4 class="close-account">Close Account</h4>
+  <div class="text-center">
+              <button class="btn button text-center" (click)="updateUser()">Update</button>
+            </div>
+    </div>
+  </div>
+</div>

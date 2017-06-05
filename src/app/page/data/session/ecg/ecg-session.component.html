@@ -1,0 +1,77 @@
+<div class="session">
+    <div class="pull-left status-bar">
+        <img src="/img/type-activity.png" style="">
+        <div class="time">10:00 AM</div>
+        <span class="r-hvalue">{{hrtChart.restHeartRate}}</span>
+        <span class="r-description">Resting Heart Rate</span>
+        <span class="m-hvalue" style="font-size: 30px;display: inline-block;margin-left: 20px;">{{hrtChart.maxHeartRate}}</span>
+        <span class="m-description">Maximum Heart Rate</span>
+
+    </div>
+    <div class="container-fluid">
+
+        <div class="col-xs-11 hidden" style="font-size: 18px">
+            Session View - ECG Data from
+            <span class="text-nowrap">
+                {{date}}
+            </span>
+        </div>
+        <div class="col-xs-1 pull-right">
+            <div class="closebtn" (click)="backClicked()">
+                &times;
+            </div>
+        </div>
+    </div>
+
+    <div class="graph clearfix">
+        <!--Beagin   heart rate time zone-->
+        <!--<div class="timezone col-sm-6">
+            <heart-rate-timezone class="hidden" [dataSetId]="dataSetId"></heart-rate-timezone>
+        </div>-->
+        <div class="sleep-stage ht-zone">
+            <div class="hrt-comment">Time in heart rate zones</div>
+            <div class="g-line clearfix">
+                <div class="item line awake"></div>
+                <div class="item value">
+                    22 minutes
+                    <span class="meaning">Awake</span></div>
+            </div>
+            <div class="g-line clearfix">
+                <div class="item line rem"></div>
+                <div class="item value">
+                    321 minutes
+                    <span class="meaning">REM</span></div>
+            </div>
+            <div class="g-line clearfix">
+                <div class="item line shallow"></div>
+                <div class="item value">
+                    149 minutes
+                    <span class="meaning">Shallow Sleep</span></div>
+            </div>
+            <div class="g-line clearfix">
+                <div class="item line deep"></div>
+                <div class="item value">
+                    202 minutes
+                    <span class="meaning">Deep Sleep</span></div>
+            </div>
+        </div>
+
+        <div class="heart-rate pull-right">
+            <div class="hrt1-comment">Heart Rate</div>
+            <heart-rate-chart class="h-graph" #hrtChart [dataSetId]="dataSetId" [dataSetTime]="date" [scope]="accChart.scope" [accSeekbar]="accChart.seekbarPosition" (hrClicked)="accChart.seekbarClick($event);"></heart-rate-chart>
+        </div>
+        <div class="ecg-plot col-xs-12" style="margin-top:25px;">
+            <accelerometer-chart [dataSetId]="dataSetId" [dataSetTime]="date" #accChart></accelerometer-chart>
+        </div>
+
+        <div class="calmness pull-left" style="height: 210px;width:435px;">
+            <div class="hrt2-comment">CALMness</div>
+            <calmness-chart [dataSetId]="dataSetId" [dataSetTime]="date" [scope]="accChart.scope" [accSeekbar]="accChart.seekbarPosition"></calmness-chart>
+        </div>
+        <div class="motion pull-right" style="height: 210px;width:435px;">
+            <div class="hrt2-comment">Motion intensity</div>
+            <motion-chart [dataSetId]="dataSetId" [dataSetTime]="date" [scope]="accChart.scope" [accSeekbar]="accChart.seekbarPosition"></motion-chart>
+        </div>
+
+    </div>
+</div>

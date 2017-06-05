@@ -1,0 +1,134 @@
+.data-page {
+    background: #FFFFFF;
+    margin: 20px 50px;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.filter-sidebar {
+    width: 200px;
+    margin-right: 20px;
+    float: left;
+    /*outline: 1px red solid;*/
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.filter-by {
+    border-bottom: 1px gray solid;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.filter-div {
+    padding-right: 20px;
+    border-right: 1px gray solid;
+}
+
+
+/**********Content table*********/
+
+.graph {
+    width: calc(100% - 280px);
+    float: left;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.filter-sidebar hr {
+    height: 5px;
+    background: #000;
+    border: 0px;
+}
+
+
+/**********Content table*********/
+
+.graph {
+    width: calc(100% - 280px);
+    max-width: 750px;
+    float: left;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+
+/*.graph * {
+    outline: gray solid 1px;
+}*/
+
+.graph .header {
+    line-height: 40px;
+    background: #494D51;
+    color: #fff;
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.graph .type {
+    display: inline-block;
+    width: 10%;
+}
+
+.graph .description {
+    display: inline-block;
+    width: 50%;
+}
+
+.graph .date {
+    display: inline-block;
+    width: 25%;
+}
+
+.graph .owner {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+}
+
+.graph .content {
+    /*line-height: 35px;*/
+    /*background: #494D51;*/
+    color: #000;
+    /*height: 35px;*/
+    padding: 0 10px;
+    overflow-y: scroll;
+    height: 500px;
+}
+
+.graph .content .c-row {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.graph .content .c-row:hover {
+    background: #F7F7F7;
+}
+
+.graph .content .day-start {
+    margin-top: 55px;
+}
+
+.graph .content .day-start:first {
+    margin-top: 20px;
+}
+
+.graph .content .more-btn {
+    outline: none!important;
+}
+
+.select {
+    margin: 10px 0px;
+}
+
+pre {
+    margin: 1em 0;
+}
+
+select.selectpicker {
+    display: none;
+    /* Prevent FOUC */
+}

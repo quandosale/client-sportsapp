@@ -1,0 +1,132 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div class="main">
+    <div class="row">
+        <div class="item">Gateways</div>
+        <div style=" margin-bottom: 50px; width: 450px">
+            <!-- regular accordion -->
+            <accordion [showArrows]="true">
+                <accordion-group heading="Device{{index+1}}" *ngFor="let gateway of gateways;  let index = index">
+                    <div class="row gateway">
+                        <div class="col-xs-4"><b>Device Name</b></div>
+                        <div class="col-xs-8 text-center">{{gateway.name}}</div>
+                    </div>
+
+                    <div class="row gateway">
+                        <div class="col-xs-4"><b>Device Type</b></div>
+                        <div class="col-xs-8">{{gateway.type}}</div>
+                    </div>
+
+                    <div class="row gateway">
+                        <div class="col-xs-5"><b>Deactivate Device</b></div>
+                        <div class="col-xs-7">
+                            <div class="material-switch deactivate">
+                                <input id="gateway" name="gateway" type="checkbox" [(ngModel)]="gateway.Deactivate" />
+                                <label for="gateway" class="label-success"></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gateway">
+                        <div class="col-xs-5"><b>Configure Device</b></div>
+                        <div class="col-xs-7"><button class="btn btn-success configure" (click)="showDialog(gateway)">Edit</button></div>
+                    </div>
+                </accordion-group>
+            </accordion>
+        </div>
+    </div>
+    <div class="row">
+        <div class="setting">Default Gateways Setting </div>
+        <div style="padding: 10px">
+            <div class="setting-item row">
+                <div class="width-frequency">
+                    <div class="col-xs-7 frequency">Upload Frequency</div>
+                    <div class="col-xs-5">
+                        <select class="form-control" [(ngModel)]="config.upload_freq" config.upload_freq="Select name">
+                       <option *ngFor="let n of states" [attr.value]="n">{{n}} Minutes</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+            <div class="setting-item row">
+                <div class="width-frequency">
+                    <div class="col-xs-7 frequency">Polling Frequency</div>
+                    <div class="col-xs-5 has-success">
+                        <select class="form-control" [(ngModel)]="config.polling_freq" config.polling_freq="Select name">
+                        <option *ngFor="let n of states" [attr.value]="n">{{n}} Minutes</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+            <div class="setting-item row">
+                <div class="accordion-checkbox width-frequency">
+                    <div class="col-xs-8 frequency">Login Every time</div>
+                    <div class="check col-xs-4">
+                        <div class="material-switch ">
+                            <input id="config" name="config" type="checkbox" [(ngModel)]="config.login_everytime" />
+                            <label for="config" class="label-success"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="setting-item row">
+                <div class="width-frequency text-center">
+                    <button class="btn btn-success gatewayBtn" (click)="update()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Configure Device" [(visible)]="display" modal="modal" width="400" responsive="true">
+    <div class="setting-item row">
+        <div class="col-xs-5 frequency">Device Name</div>
+        <div class="col-xs-7">
+            <input type="text" class="form-control" [(ngModel)]="selectGateway.name">
+        </div>
+    </div>
+    <!--<div class="setting-item row">
+        <div class="accordion-checkbox">
+            <div class="col-xs-7 frequency">Deactivate Device</div>
+            <div class="Configure col-xs-5">
+                <div class="material-switch ">
+                    <input id="selectGatewayDeactivate" name="selectGatewayDeactivate" type="checkbox" [(ngModel)]="selectGateway.login_everytime" />
+                    <label for="selectGatewayDeactivate" class="label-success"></label>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <div class="setting-item row">
+        <div>
+            <div class="col-xs-5 frequency">Upload Frequency</div>
+            <div class="col-xs-7">
+                <select class="form-control" [(ngModel)]="selectGateway.upload_freq" selectGateway.upload_freq="Select name">
+                       <option *ngFor="let n of states" [attr.value]="n">{{n}} Minutes</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="setting-item row">
+        <div>
+            <div class="col-xs-5 frequency">Polling Frequency</div>
+            <div class="col-xs-7 has-success">
+                <select class="form-control" [(ngModel)]="selectGateway.polling_freq" selectGateway.polling_freq="Select name">
+                        <option *ngFor="let n of states" [attr.value]="n">{{n}} Minutes</option>
+                    </select>
+            </div>
+        </div>
+    </div>
+    <div class="setting-item row">
+        <div class="accordion-checkbox">
+            <div class="col-xs-7 frequency">Login Every time</div>
+            <div class="Configure col-xs-5">
+                <div class="material-switch ">
+                    <input id="selectGatewayEverytime" name="selectGatewayEverytime" type="checkbox" [(ngModel)]="selectGateway.login_everytime" />
+                    <label for="selectGatewayEverytime" class="label-success"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <button class="btn btn-Save" (click)="updateGateWay()">Save</button>
+    </div>
+</p-dialog>

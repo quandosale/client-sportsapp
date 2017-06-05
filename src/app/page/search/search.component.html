@@ -1,0 +1,56 @@
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+<div class="div_network">
+    <div class="row">
+        <div class="col-md-5 col-sm-12 col-xs-12 network">
+            Add Network
+        </div>
+        <div class="col-md-7 col-sm-12 col-xs-12 text-right">
+            <input [(ngModel)]="searchText" type="search" placeholder="Search" (keyup)="search()">
+            <!--<button type="button" class="btn btn-info btn-circle" pTooltip="Search" tooltipPosition="bottom"><i class="glyphicon glyphicon-search" (click) = "search()"></i></button>-->
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12" style="height: 5px; background: #099DED ; margin-top: 10px"></div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12 search"> Search Result </div>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12 search" style="color:#099DED ">{{this.n_Users}} Doctors </div>
+        <div class="text-center  result_image" *ngFor="let user of resultUsers">
+            <img [src]="user.photo" class=" img-thumbnail" [popover]="userpop" onerror="this.src='img/default-error.jpg';">
+            <div class="searchUsername">Dr.{{user.secondname}}</div>
+
+
+            <popover-content #userpop [closeOnClickOutside]="true" placement="auto right" [closeOnMouseOutside]="false">
+                <div class="col-sm-9  col-xs-9">
+                    <b>Dr.{{user.secondname}}</b> <br>
+                    <span style="color: #099DED">{{user.address1}} {{user.address2}} in {{user.city}}, {{user.country}} </span><br>
+                    <b><i><span style="color: #F77D0E">Dr.{{user.secondname}} has {{user.numberOfPatients}} patients </span></i></b><br>
+                    <span>Send a Networking request to Dr.{{user.secondname}}</span><br>
+                    <div><input type="checkbox" [(ngModel)]="shareCheck" class="requset_check"><span>Share my patient's data with Dr.{{user.secondname}}</span></div>
+                    <div><input type="checkbox" [(ngModel)]="requestCheck" class="requset_check"><span>Request to see Dr.{{user.secondname}}'s patient data</span></div>
+                </div>
+
+                <div class="col-sm-3 col-xs-3">
+                    <img [src]="user.photo" class=" img_requset" onerror="this.src='img/default-error.jpg';">
+                </div>
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-success button_requset" (click)="addNetwork(user)">Add</button>
+                    <button type="button" class="btn btn-warning button_requset" (click)="sendRequset(user._id)">Request</button>
+                </div>
+
+            </popover-content>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="col-md-12 col-sm-12 col-xs-12 search" style="color: #F77D0E">{{this.n_Patients}} Patients </div>
+        <div class="text-center  result_image" *ngFor="let patient of resultPatients">
+            <img [src]="patient.photo" class="img-patients" onerror="this.src='img/default-error.jpg';">
+            <div class="searchUsername">{{patient.lastname}}</div>
+        </div>
+    </div>
+
+</div>

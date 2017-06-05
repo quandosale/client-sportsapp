@@ -1,0 +1,59 @@
+import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+import { SharedService } from '../../services/index';
+import { CONFIG } from '../../common/config';
+import { Router } from '@angular/router';
+declare let $: any;
+@Component({
+
+  selector: 'page_menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css'],
+})
+export class MenuComponent implements OnInit, AfterViewInit {
+  src: string = CONFIG.SERVER_URL + '/assets/gravatar/default.jpg';
+  selectedMenu = '';
+  liNode: any;
+  constructor(
+    private router: Router,
+    private sharedService: SharedService,
+    public elNode: ElementRef) { }
+  ngOnInit() {
+
+  }
+  ngAfterViewInit() {
+    this.liNode = $(this.elNode.nativeElement).find('li a');
+    let _selectedMenu = this.sharedService.getSelectedMenu();
+    if (_selectedMenu !== null) {
+      this.liNode.removeClass('activate');
+      let selector = `#${_selectedMenu}`;
+      this.liNode = $(this.elNode.nativeElement).find(selector);
+      this.liNode.addClass('activate');
+    }
+    this.liNode = $(this.elNode.nativeElement).find('li a');
+    this.liNode.click((event: any) => {
+      this.liNode.removeClass('activate');
+      let target = event.target || event.srcElement || event.currentTarget;
+      let idAttr = target.attributes.id;
+
+      if (idAttr != null) {
+
+        if (idAttr !== undefined) {
+
+          let id = idAttr.nodeValue;
+          let selector = `#${id}`;
+          this.liNode = $(this.elNode.nativeElement).find(selector);
+          this.liNode.addClass('activate');
+          if (id !== 'logout') {
+            this.sharedService.setSelectedMenu(id);
+          }
+        }
+      }
+    });
+  }
+
+  logOut() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
+  }
+
+}

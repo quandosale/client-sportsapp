@@ -1,0 +1,8 @@
+<div class="hrt">
+    <div id="hrtgraph" (window:resize)="onHrtResize($event)" (mousemove)='onMouseMove($event)' (mouseleave)="onMouseLeave($event)">
+    </div>
+    <div class="overlayer" [class.Show]="isBusy"></div>
+    <i class="fa fa-spinner busySplash" [class.Show]="isBusy"></i>
+    <div class="x-unit">(h:m)</div>
+    <div id='tooltip'></div>
+</div>
