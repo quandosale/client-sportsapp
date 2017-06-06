@@ -22,7 +22,7 @@
                     <!--password-->
                     <div class="form-group has-success has-feedback">
                         <div class="col-sm-12">
-                            <input type="password" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password" [ngClass]="{ 'error-form-control': !onRegister&&!password.valid }" (keyup.enter)="signin()" required>
+                            <input type="password" class="form-control" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Password1" [ngClass]="{ 'error-form-control': !onRegister&&!password.valid }" (keyup.enter)="signin()" required>
                             <span class="glyphicon glyphicon-lock form-control-feedback" [ngClass]="{ 'error-form-control-feedback': !onRegister&&!password.valid }"></span>
                         </div>
                     </div>
