@@ -2,4 +2,4 @@ version: 0.0
 os: linux
 files:
   - source: /dist
-    destination: /home/ec2-user/sportsapp/client/dist
+    destination: /home/ec2-user/client
