@@ -1,5 +1,5 @@
 
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Directive } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { JsonpModule } from '@angular/http';
@@ -12,6 +12,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NetWorkComponent } from './network/network.component';
 import { NotificationComponent } from './notification/notification.component';
+import { FirmwareComponent } from './firmware/firmware.component';
 import { SearchPipe } from './network/search';
 import { PageRoutingModule } from './page-routing.module';
 import { SearchComponent } from './search/search.component';
@@ -38,8 +39,9 @@ import {
 import { SettingComponent, UserComponent, GatewaysComponent } from './settings/index';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { AnaysticsOptionComponent } from './analytics/analytics-option/anaytics-option.component';
+import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-
+import { FileUploadModule } from 'ng2-file-upload';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 
 @NgModule({
@@ -61,6 +63,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     TooltipModule,
     PopoverModule,
     OverlayPanelModule,
+    FileUploadModule,
     DropdownModule,
     BusyModule.forRoot(
       new BusyConfig({
@@ -101,6 +104,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     HeartRateTimezoneComponent,
     SleepSessionComponent,
     SleepChartComponent,
+    FirmwareComponent,
     CalmnessChartComponent,
     MotionChartComponent,
     SleepAnalysisComponent,      // sleep analysis
@@ -112,7 +116,7 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
     UpgradeComponent,         // Upgrade page
   ],
   providers: [ConfirmationService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PageModule { }
 

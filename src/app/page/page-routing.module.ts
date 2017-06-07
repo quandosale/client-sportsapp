@@ -12,6 +12,7 @@ import { SearchComponent } from './search/search.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { FirmwareComponent } from './firmware/firmware.component';
 import { AuthGuard } from '../services/index';
 
 const pageRoutes: Routes = [
@@ -33,6 +34,8 @@ const pageRoutes: Routes = [
       { path: 'notification', component: NotificationComponent },
       { path: 'analytics', component: AnalyticsComponent },
       { path: 'upgrade', component: UpgradeComponent },
+
+      { path: 'firmware', component: FirmwareComponent }
     ],
     canActivate: [AuthGuard]
   }
